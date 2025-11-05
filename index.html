@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Програмування та розробка ПЗ</title>
+    <style>
+        /* Загальні стилі */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #F5F5F0; /* Бежевий фон */
+            color: #2F4F2F; /* Темно-зелений текст */
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Навігація */
+        header {
+            background-color: #2F4F2F; /* Темно-зелений */
+            color: #F5F5F0; /* Бежевий */
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(47, 79, 47, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #F5F5F0; /* Бежевий */
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: #F5F5F0; /* Бежевий */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #8FBC8F; /* Світло-зелений */
+        }
+        
+        /* Головна сторінка */
+        .hero {
+            background: linear-gradient(135deg, #2F4F2F, #3CB371); /* Зелений градієнт */
+            color: #FFFFFF; /* Білий */
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FFFFFF; /* Білий */
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #F5F5F0; /* Бежевий */
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #8FBC8F; /* Світло-зелений */
+            color: #2F4F2F; /* Темно-зелений */
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #9ACD32; /* Жовто-зелений */
+        }
+        
+        /* Секції */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2F4F2F; /* Темно-зелений */
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #556B2F; /* Оливковий */
+        }
+        
+        /* Картки */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: #FFFFFF; /* Білий */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(47, 79, 47, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #D2B48C; /* Бежевий бордер */
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(47, 79, 47, 0.15);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            color: #2F4F2F; /* Темно-зелений */
+            margin-bottom: 1rem;
+        }
+        
+        .card p {
+            color: #556B2F; /* Оливковий */
+            margin-bottom: 1rem;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: #3CB371; /* Середньо-зелений */
+            margin-bottom: 1rem;
+        }
+        
+        /* Таблиця */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: #FFFFFF; /* Білий */
+            box-shadow: 0 5px 15px rgba(47, 79, 47, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #D2B48C; /* Бежевий бордер */
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #D2B48C; /* Бежевий бордер */
+        }
+        
+        th {
+            background-color: #3CB371; /* Середньо-зелений */
+            color: #FFFFFF; /* Білий */
+        }
+        
+        tr:nth-child(even) {
+            background-color: #F5F5F0; /* Бежевий */
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #2F4F2F; /* Темно-зелений */
+            color: #F5F5F0; /* Бежевий */
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            color: #F5F5F0; /* Бежевий */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #8FBC8F; /* Світло-зелений */
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            color: #D2B48C; /* Бежевий */
+        }
+        
+        /* Сторінки */
+        .page {
+            display: none;
+            padding: 2rem 0;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Стилі для сторінки основ програмування */
+        .topic-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .topic-title {
+            color: #2F4F2F; /* Темно-зелений */
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .topic-icon {
+            margin-right: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .topic-content {
+            background-color: #FFFFFF; /* Білий */
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(47, 79, 47, 0.08);
+            border: 1px solid #D2B48C; /* Бежевий бордер */
+        }
+        
+        .code-block {
+            background-color: #2F4F2F; /* Темно-зелений */
+            color: #F5F5F0; /* Бежевий */
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border: 1px solid #556B2F; /* Оливковий бордер */
+        }
+        
+        .example-list {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        .example-list li {
+            margin-bottom: 0.5rem;
+            color: #556B2F; /* Оливковий */
+        }
+        
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-item {
+            background-color: #F5F5F0; /* Бежевий */
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #3CB371; /* Середньо-зелений */
+            color: #2F4F2F; /* Темно-зелений */
+        }
+        
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навігація -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Програмування & ПЗ</div>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showPage('home')">Головна</a></li>
+                    <li><a href="#" onclick="showPage('basics')">Основи</a></li>
+                    <li><a href="#" onclick="showPage('oop')">ООП</a></li>
+                    <li><a href="#" onclick="showPage('web')">Веб-розробка</a></li>
+                    <li><a href="#" onclick="showPage('mobile')">Мобільна розробка</a></li>
+                    <li><a href="#" onclick="showPage('engineering')">Інженерія ПЗ</a></li>
+                    <li><a href="#" onclick="showPage('languages')">Мови програмування</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Головна сторінка -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="container">
+                <h1>Програмування та розробка програмного забезпечення</h1>
+                <p>Цей напрям — основний і базовий для спеціальності "Комп'ютерні науки". Його мета — навчити студентів створювати програмні продукти, від простих скриптів до великих корпоративних систем, розуміти як працює код, і вміти його проектувати, тестувати та підтримувати.</p>
+                <a href="#" class="btn" onclick="showPage('basics')">Дізнатися більше</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <section>
+                <div class="section-title">
+                    <h2>Основні напрями навчання</h2>
+                    <p>Сучасна освіта в галузі програмування охоплює різноманітні технології та підходи</p>
+                </div>
+                
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-icon">🔹</div>
+                            <h3>Основи програмування</h3>
+                            <p>Перші курси знайомлять із базовими принципами алгоритмізації та програмування, розвивають алгоритмічне мислення.</p>
+                            <a href="#" onclick="showPage('basics')">Детальніше →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-icon">🔹</div>
+                            <h3>Об'єктно-орієнтоване програмування</h3>
+                            <p>Сучасний підхід до написання програм, коли код поділяється на класи та об'єкти для кращої організації.</p>
+                            <a href="#" onclick="showPage('oop')">Детальніше →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-icon">🔹</div>
+                            <h3>Розробка вебзастосунків</h3>
+                            <p>Студенти знайомляться із сучасними вебтехнологіями для створення повноцінних вебсайтів та додатків.</p>
+                            <a href="#" onclick="showPage('web')">Детальніше →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-icon">🔹</div>
+                            <h3>Мобільна розробка</h3>
+                            <p>Технології для створення мобільних застосунків для Android, iOS та кросплатформові рішення.</p>
+                            <a href="#" onclick="showPage('mobile')">Детальніше →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-icon">🔹</div>
+                            <h3>Інженерія ПЗ</h3>
+                            <p>Вивчення повного життєвого циклу ПЗ — від ідеї до готового продукту, включаючи тестування та документування.</p>
+                            <a href="#" onclick="showPage('engineering')">Детальніше →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-icon">🔹</div>
+                            <h3>Мови програмування</h3>
+                            <p>Вивчення різних мов програмування від початкового рівня до просунутого з різними сферами застосування.</p>
+                            <a href="#" onclick="showPage('languages')">Детальніше →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Сторінка "Основи програмування" -->
+    <section id="basics" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Основи програмування</h2>
+                <p>Перші кроки у світі програмування: алгоритми, структури даних та базові концепції</p>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🎯</span> Мета курсу</h3>
+                <div class="topic-content">
+                    <p>Основи програмування — це базова дисципліна, з якої починається навчання кожного програміста. Вона формує логічне, алгоритмічне мислення, навчає будувати програми, що розв'язують конкретні задачі за допомогою комп'ютера.</p>
+                    <ul class="example-list">
+                        <li>Навчити студента думати як програміст — розкладати задачу на кроки (алгоритми).</li>
+                        <li>Ознайомити з поняттями змінних, операторів, структур даних і функцій.</li>
+                        <li>Показати, як перетворити алгоритм у програму, яку комп'ютер може виконати.</li>
+                        <li>Сформувати навички відлагодження та тестування простих програм.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Що таке програма</h3>
+                <div class="topic-content">
+                    <p>Програма — це послідовність інструкцій, які комп'ютер виконує для досягнення певного результату. Усе програмування ґрунтується на логічних діях: обчислення, порівняння, введення, виведення, вибір дій, повторення.</p>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Алгоритмізація</h3>
+                <div class="topic-content">
+                    <p>Перед тим як писати код, потрібно скласти алгоритм — чіткий опис послідовності кроків для розв'язання задачі.</p>
+                    
+                    <h4>Основні властивості алгоритму:</h4>
+                    <ul class="example-list">
+                        <li><strong>Скінченність</strong> — має завершуватись.</li>
+                        <li><strong>Визначеність</strong> — кожен крок однозначний.</li>
+                        <li><strong>Результативність</strong> — приводить до розв'язку задачі.</li>
+                    </ul>
+                    
+                    <h4>Приклади алгоритмів:</h4>
+                    <ul class="example-list">
+                        <li>обчислення суми двох чисел;</li>
+                        <li>пошук найбільшого елемента в масиві;</li>
+                        <li>сортування чисел.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Базові поняття програмування</h3>
+                <div class="topic-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Поняття</th>
+                                <th>Пояснення</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Змінна</td>
+                                <td>Комірка пам'яті, де зберігається значення (наприклад: int a = 5;)</td>
+                            </tr>
+                            <tr>
+                                <td>Тип даних</td>
+                                <td>Визначає, які значення може мати змінна (цілі, дійсні, символи тощо)</td>
+                            </tr>
+                            <tr>
+                                <td>Оператор</td>
+                                <td>Команда, яку виконує комп'ютер (наприклад, a = b + c;)</td>
+                            </tr>
+                            <tr>
+                                <td>Вираз</td>
+                                <td>Формула, що поєднує змінні та оператори</td>
+                            </tr>
+                            <tr>
+                                <td>Коментарі</td>
+                                <td>Текст у коді, який пояснює роботу програми, але не виконується</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Основні конструкції програмування</h3>
+                <div class="topic-content">
+                    <p>Всі програми складаються з трьох типів конструкцій:</p>
+                    
+                    <h4>1. Послідовність</h4>
+                    <p>Інструкції виконуються одна за одною.</p>
+                    <div class="code-block">
+                        a = 5;<br>
+                        b = 3;<br>
+                        sum = a + b;
+                    </div>
+                    
+                    <h4>2. Розгалуження (умови)</h4>
+                    <p>Виконуються різні дії залежно від умови.</p>
+                    <div class="code-block">
+                        if (a > b)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;max = a;<br>
+                        else<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;max = b;
+                    </div>
+                    
+                    <h4>3. Цикли (повторення)</h4>
+                    <p>Виконують блок команд кілька разів.</p>
+                    <div class="code-block">
+                        for (int i = 0; i < 10; i++)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;printf("%d ", i);
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Функції та модульність</h3>
+                <div class="topic-content">
+                    <p>Функція — окрема частина програми, яка виконує певну дію. Використовується для повторного використання коду, кращої структури програми.</p>
+                    <div class="code-block">
+                        int add(int x, int y) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return x + y;<br>
+                        }
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Масиви та структури даних</h3>
+                <div class="topic-content">
+                    <p>Масив — набір змінних одного типу, розміщених підряд у пам'яті.</p>
+                    <div class="code-block">
+                        int numbers[5] = {1, 2, 3, 4, 5};
+                    </div>
+                    <p>Дає змогу працювати з великими обсягами даних (списки, таблиці тощо). Далі студенти вивчають складніші структури: списки, черги, стеки, дерева, графи.</p>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Введення та виведення даних</h3>
+                <div class="topic-content">
+                    <p>Програми повинні взаємодіяти з користувачем:</p>
+                    <ul class="example-list">
+                        <li>Введення: scanf() у C, input() у Python;</li>
+                        <li>Виведення: printf() у C, print() у Python.</li>
+                    </ul>
+                    <div class="code-block">
+                        int a, b;<br>
+                        scanf("%d%d", &a, &b);<br>
+                        printf("Sum = %d", a + b);
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Помилки та налагодження</h3>
+                <div class="topic-content">
+                    <p>Типи помилок:</p>
+                    <ul class="example-list">
+                        <li><strong>Синтаксичні</strong> — порушення правил мови (пропущена дужка, крапка з комою).</li>
+                        <li><strong>Логічні</strong> — програма працює, але дає неправильний результат.</li>
+                        <li><strong>Робочі (runtime)</strong> — виникають під час виконання (ділення на нуль, вихід за межі масиву).</li>
+                    </ul>
+                    <p>Студенти вчаться використовувати налагоджувачі (debuggers) для пошуку й виправлення помилок.</p>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Інструменти, що використовують</h3>
+                <div class="topic-content">
+                    <ul class="example-list">
+                        <li>Середовища програмування (IDE): Code::Blocks, Dev-C++, Visual Studio, VS Code.</li>
+                        <li>Компілятори: GCC, Clang.</li>
+                        <li>Консолі введення/виведення, термінали.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Приклади типових навчальних завдань</h3>
+                <div class="topic-content">
+                    <ul class="example-list">
+                        <li>Знайти суму та середнє арифметичне трьох чисел.</li>
+                        <li>Визначити, чи є число парним.</li>
+                        <li>Знайти найбільший спільний дільник (НСД).</li>
+                        <li>Вивести таблицю множення.</li>
+                        <li>Порахувати кількість позитивних чисел у масиві.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🧩</span> Після вивчення курсу студент уміє:</h3>
+                <div class="topic-content">
+                    <div class="skills-list">
+                        <div class="skill-item">✅ створювати прості алгоритми</div>
+                        <div class="skill-item">✅ розуміти логіку програмування</div>
+                        <div class="skill-item">✅ писати, тестувати та налагоджувати код</div>
+                        <div class="skill-item">✅ користуватись базовими засобами програмування</div>
+                        <div class="skill-item">✅ переходити до складніших тем — ООП, бази даних, веб-розробка, штучний інтелект</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сторінка "ООП" -->
+    <section id="oop" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Об'єктно-орієнтоване програмування (ООП)</h2>
+                <p>Сучасний підхід до написання програм з використанням класів та об'єктів</p>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🎯</span> Мета курсу</h3>
+                <div class="topic-content">
+                    <p>Об'єктно-орієнтоване програмування (ООП) — це сучасна парадигма програмування, яка моделює програму не як набір команд, а як систему об'єктів, що взаємодіють між собою. Цей підхід є основою для створення великих, зрозумілих і масштабованих програм.</p>
+                    <ul class="example-list">
+                        <li>Навчити розробляти програми у вигляді об'єктів і класів, що відображають реальні об'єкти чи поняття.</li>
+                        <li>Показати, як використовувати принципи ООП для повторного використання коду, зручної підтримки і розвитку проєктів.</li>
+                        <li>Ознайомити студентів із синтаксисом і концепціями C++, Java, C# або Python у контексті ООП.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Основна ідея ООП</h3>
+                <div class="topic-content">
+                    <p>ООП ґрунтується на тому, що програма — це набір об'єктів, кожен із яких має:</p>
+                    <ul class="example-list">
+                        <li>стан (дані) — описується змінними (поля, атрибути);</li>
+                        <li>поведінку (дії) — описується методами (функціями).</li>
+                    </ul>
+                    
+                    <h4>Наприклад:</h4>
+                    <div class="code-block">
+                        class Car {<br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;string model;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;int speed;<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;void drive() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout << "Машина їде зі швидкістю " << speed << " км/год." << endl;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        };
+                    </div>
+                    <p>Тут клас Car описує об'єкт "автомобіль", який має стан (модель, швидкість) і дію (рух).</p>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Основні поняття ООП</h3>
+                <div class="topic-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Поняття</th>
+                                <th>Пояснення</th>
+                                <th>Приклад</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Клас</td>
+                                <td>шаблон або креслення об'єкта</td>
+                                <td>class Car { ... };</td>
+                            </tr>
+                            <tr>
+                                <td>Об'єкт</td>
+                                <td>конкретний екземпляр класу</td>
+                                <td>Car bmw;</td>
+                            </tr>
+                            <tr>
+                                <td>Поле (атрибут)</td>
+                                <td>змінна, що зберігає дані об'єкта</td>
+                                <td>speed = 120;</td>
+                            </tr>
+                            <tr>
+                                <td>Метод</td>
+                                <td>функція, яка описує дію об'єкта</td>
+                                <td>bmw.drive();</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Чотири головні принципи ООП</h3>
+                <div class="topic-content">
+                    <h4>🧱 1. Інкапсуляція</h4>
+                    <p>Приховування внутрішніх даних об'єкта та керування доступом до них через методи.</p>
+                    <div class="code-block">
+                        class BankAccount {<br>
+                        private:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;double balance;<br><br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;void deposit(double amount) { balance += amount; }<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;double getBalance() { return balance; }<br>
+                        };
+                    </div>
+                    <p>➡ Користувач не може змінити balance напряму, тільки через методи deposit() і getBalance().</p>
+                    
+                    <h4>🌳 2. Наслідування</h4>
+                    <p>Механізм, який дозволяє створювати нові класи на основі вже існуючих.</p>
+                    <div class="code-block">
+                        class Animal {<br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;void eat() { cout << "Тварина їсть\n"; }<br>
+                        };<br><br>
+                        class Dog : public Animal {<br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;void bark() { cout << "Собака гавкає\n"; }<br>
+                        };
+                    </div>
+                    <p>➡ Dog успадковує все від Animal і додає свою поведінку.</p>
+                    
+                    <h4>🔁 3. Поліморфізм</h4>
+                    <p>Можливість використовувати однаковий інтерфейс, але з різною поведінкою.</p>
+                    <div class="code-block">
+                        class Shape {<br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;virtual void draw() { cout << "Фігура\n"; }<br>
+                        };<br><br>
+                        class Circle : public Shape {<br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;void draw() override { cout << "Коло\n"; }<br>
+                        };
+                    </div>
+                    <p>➡ Метод draw() викликає різні дії залежно від типу об'єкта (Shape або Circle).</p>
+                    
+                    <h4>🎭 4. Абстракція</h4>
+                    <p>Виділення головного, приховування деталей реалізації. Дає змогу працювати з об'єктами через інтерфейси або абстрактні класи.</p>
+                    <div class="code-block">
+                        class Figure {<br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;virtual void area() = 0; // чисто віртуальний метод<br>
+                        };
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Структура класу в ООП</h3>
+                <div class="topic-content">
+                    <p>Типова структура:</p>
+                    <div class="code-block">
+                        class ClassName {<br>
+                        private:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;// Поля (дані)<br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;// Конструктор<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;// Методи<br>
+                        };
+                    </div>
+                    
+                    <h4>Приклад:</h4>
+                    <div class="code-block">
+                        class Student {<br>
+                        private:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;string name;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;int age;<br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Student(string n, int a) { name = n; age = a; }<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;void info() { cout << name << " (" << age << " років)" << endl; }<br>
+                        };
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Конструктори та деструктори</h3>
+                <div class="topic-content">
+                    <p>Конструктор — спеціальний метод, який викликається під час створення об'єкта.</p>
+                    <p>Деструктор — метод, що викликається при знищенні об'єкта.</p>
+                    <div class="code-block">
+                        class Test {<br>
+                        public:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Test() { cout << "Створено об'єкт\n"; }<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;~Test() { cout << "Видалено об'єкт\n"; }<br>
+                        };
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Практичні приклади із життя</h3>
+                <div class="topic-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Реальний об'єкт</th>
+                                <th>Можливий клас</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Автомобіль</td>
+                                <td>Car з методами start(), drive(), stop()</td>
+                            </tr>
+                            <tr>
+                                <td>Студент</td>
+                                <td>Student з атрибутами ім'я, вік, середній бал</td>
+                            </tr>
+                            <tr>
+                                <td>Банк</td>
+                                <td>BankAccount з методами deposit(), withdraw()</td>
+                            </tr>
+                            <tr>
+                                <td>Гра</td>
+                                <td>Player, Enemy, Weapon — різні класи з наслідуванням</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Переваги ООП</h3>
+                <div class="topic-content">
+                    <div class="skills-list">
+                        <div class="skill-item">✅ Код легше розуміти й підтримувати</div>
+                        <div class="skill-item">✅ Можна багаторазово використовувати класи в різних проєктах</div>
+                        <div class="skill-item">✅ Зручно масштабувати великі системи</div>
+                        <div class="skill-item">✅ Підвищується безпека — дані захищені в межах об'єкта</div>
+                        <div class="skill-item">✅ Просте тестування і розширення коду</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Мови, у яких застосовується ООП</h3>
+                <div class="topic-content">
+                    <ul class="example-list">
+                        <li><strong>C++</strong> — класична мова для системного програмування</li>
+                        <li><strong>Java</strong> — повністю об'єктно-орієнтована</li>
+                        <li><strong>C#</strong> — популярна для розробки під Windows і Unity</li>
+                        <li><strong>Python</strong> — універсальна, проста в синтаксисі</li>
+                        <li><strong>JavaScript / TypeScript</strong> — використовуються в веброзробці</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Приклади навчальних завдань</h3>
+                <div class="topic-content">
+                    <ul class="example-list">
+                        <li>Створити клас "Трикутник", який обчислює площу і периметр.</li>
+                        <li>Розробити класи "Працівник" і "Менеджер" із наслідуванням.</li>
+                        <li>Реалізувати систему "Банк" із вкладом, зняттям і перевіркою балансу.</li>
+                        <li>Зробити ієрархію "Транспорт" → "Автомобіль", "Поїзд", "Літак".</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🧠</span> Після вивчення курсу студент уміє:</h3>
+                <div class="topic-content">
+                    <div class="skills-list">
+                        <div class="skill-item">✅ створювати класи й об'єкти</div>
+                        <div class="skill-item">✅ застосовувати принципи інкапсуляції, наслідування, поліморфізму, абстракції</div>
+                        <div class="skill-item">✅ проєктувати структуру програм за допомогою UML-діаграм</div>
+                        <div class="skill-item">✅ писати складні програми, що складаються з багатьох класів</div>
+                        <div class="skill-item">✅ розуміти сучасні фреймворки (Spring, .NET, Django, Unity)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сторінка "Веб-розробка" -->
+    <section id="web" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Розробка вебзастосунків</h2>
+                <p>Створення сучасних вебсайтів та вебдодатків з використанням актуальних технологій</p>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Що таке вебзастосунок</h3>
+                <div class="topic-content">
+                    <p>Вебзастосунок (web application) — це програмний продукт, який запускається через веб-браузер або веб-інтерфейс і працює на сервері, а не встановлюється локально. Тобто: користувач відкриває браузер, вводить адресу, і взаємодіє з інтерфейсом — все інше ("логіка", зберігання даних) працює на сервері чи в хмарі.</p>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Основні компоненти вебзастосунку</h3>
+                <div class="topic-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Компонент</th>
+                                <th>Опис</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Front-end (клієнтська частина)</td>
+                                <td>Те, що бачить користувач: HTML + CSS + JavaScript, інтерфейси, кнопки, форми.</td>
+                            </tr>
+                            <tr>
+                                <td>Back-end (серверна частина)</td>
+                                <td>Сервер обробляє запити, виконує бізнес-логіку, працює з базами даних, API-інтеграціями.</td>
+                            </tr>
+                            <tr>
+                                <td>База даних / Сховище даних</td>
+                                <td>Зберігання інформації: користувачі, записи, транзакції.</td>
+                            </tr>
+                            <tr>
+                                <td>Веб-сервер / аплікаційний сервер / API-шар</td>
+                                <td>Проміжна ланка: приймає HTTP-запити, розподіляє, викликає логіку, повертає відповіді.</td>
+                            </tr>
+                            <tr>
+                                <td>Архітектура (шари, рівні)</td>
+                                <td>Наприклад: презентаційний (UI), бізнес-логіки, доступу до даних.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Теми, які слід охопити під час навчання</h3>
+                <div class="topic-content">
+                    <ul class="example-list">
+                        <li>Мови та технології для фронт-енду: HTML5, CSS3, JavaScript, фреймворки (React, Angular, Vue)</li>
+                        <li>Адаптивний дизайн (responsive) та UX/UI</li>
+                        <li>Мови/технології для бек-енду: Node.js, Python (Django, Flask), Java (Spring), PHP, etc.</li>
+                        <li>Робота з REST API, GraphQL</li>
+                        <li>Бази даних: реляційні (MySQL, PostgreSQL) і нереляційні (MongoDB)</li>
+                        <li>Архітектура вебзастосунку: 2-tier, 3-tier, N-tier, мікросервіси</li>
+                        <li>Безпека вебзастосунків: автентифікація, авторизація, захист від атак (XSS, SQL-ін'єкції)</li>
+                        <li>Тестування і деплой: CI/CD, хостинг, хмарні сервіси</li>
+                        <li>Практичні проекти: створення повнофункціонального вебзастосунку</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Архітектура вебзастосунків</h3>
+                <div class="topic-content">
+                    <p>Варто також знати, як "влаштовано" сучасний вебзастосунок:</p>
+                    <ul class="example-list">
+                        <li><strong>Presentation Layer (шар презентації)</strong> — інтерфейс, взаємодія з користувачем</li>
+                        <li><strong>Business Layer (логічний шар)</strong> — алгоритми, правила бізнесу, обробка даних</li>
+                        <li><strong>Data Access Layer (шар доступу до даних)</strong> — взаємодія з БД, кешування</li>
+                        <li><strong>Інфраструктурні компоненти</strong>: CDN, балансувальники навантаження, кеш-сервери</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">✅</span> Чому це важливо для випускника</h3>
+                <div class="topic-content">
+                    <div class="skills-list">
+                        <div class="skill-item">Вебзастосунки — одні з найпопулярніших продуктів в IT (інтернет-сервіси, магазини, платформи)</div>
+                        <div class="skill-item">Знання фронт- і бек-енду дає гнучкість і ширшу можливість працевлаштування</div>
+                        <div class="skill-item">Робота з архітектурою і базами даних готує до створення масштабованих систем, а не просто "скриптів"</div>
+                        <div class="skill-item">Практичні навички (Git, фреймворки, деплой) роблять студента готовим до роботи в команді</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сторінка "Мобільна розробка" -->
+    <section id="mobile" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Мобільна розробка</h2>
+                <p>Створення застосунків для мобільних пристроїв на різних платформах</p>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔍</span> Що таке мобільна розробка</h3>
+                <div class="topic-content">
+                    <p>Мобільна розробка — процес створення програм (додатків) для мобільних пристроїв: смартфонів, планшетів, можливо — носимих пристроїв. Ці програми можуть бути рідними (native), крос-платформеними або гібридними.</p>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Основні технології та платформи</h3>
+                <div class="topic-content">
+                    <ul class="example-list">
+                        <li><strong>Для iOS:</strong> мова Swift або Objective-C</li>
+                        <li><strong>Для Android:</strong> мови Kotlin чи Java</li>
+                        <li><strong>Крос-платформені фреймворки:</strong> Flutter, React Native, Ionic</li>
+                        <li><strong>Гібридні підходи:</strong> наприклад, Apache Cordova дозволяє використовувати HTML/CSS/JS для мобільних додатків</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Основні складові курсу</h3>
+                <div class="topic-content">
+                    <ul class="example-list">
+                        <li>Ознайомлення з платформою — як працює мобільний пристрій, обмеження (пам'ять, батарея, сенсорний екран)</li>
+                        <li>Середовище розробки — IDE: Android Studio, Xcode; налаштування емуляторів, симуляторів</li>
+                        <li>Мови програмування — Kotlin/Java для Android, Swift/Objective-C для iOS; або мови/фреймворки для крос-платформених додатків</li>
+                        <li>Дизайн UI/UX — інтерфейс для сенсорних пристроїв, адаптивність, навігація, користувацький досвід</li>
+                        <li>Архітектура додатків — розділення логіки, даних і інтерфейсу; патерни (MVC, MVVM) і структури</li>
+                        <li>Бек-енд / Серверна частина — збереження даних, робота з API, інтеграції</li>
+                        <li>Тестування та оптимізація — різні пристрої, продуктивність, перевірка помилок</li>
+                        <li>Публікація та підтримка — випуск в App Store/Google Play, оновлення, аналітика</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🎯</span> Навички, які набуває студент</h3>
+                <div class="topic-content">
+                    <div class="skills-list">
+                        <div class="skill-item">Вміння створити мобільний додаток «з нуля» до робочого продукту</div>
+                        <div class="skill-item">Використання сучасних мов програмування мобільних платформ</div>
+                        <div class="skill-item">Проєктування інтерфейсу під мобільні пристрої з урахуванням обмежень</div>
+                        <div class="skill-item">Працювати з бек-енд сервісами, API, даними</div>
+                        <div class="skill-item">Випускати додаток на магазини, розуміти правила, монетизацію</div>
+                        <div class="skill-item">Підтримка та оновлення додатків, адаптація до нових версій ОС</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">⚠️</span> Виклики у мобільній розробці</h3>
+                <div class="topic-content">
+                    <ul class="example-list">
+                        <li>Велика фрагментація пристроїв: різні розміри екранів, версії ОС, характеристики</li>
+                        <li>Потрібна оптимізація продуктивності — батарея, пам'ять, швидкість</li>
+                        <li>Безпека, конфіденційність даних користувачів — особливо важливо для мобільних додатків</li>
+                        <li>Публікація та монетизація — вимоги магазинів додатків, маркетинг</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔮</span> Чому це важливо для сучасного ІТ-спеціаліста</h3>
+                <div class="topic-content">
+                    <div class="skills-list">
+                        <div class="skill-item">Мобільні додатки — ключовий канал взаємодії з користувачем: смартфони майже в кожного</div>
+                        <div class="skill-item">Знання мобільної розробки відкриває великі можливості працевлаштування (Android, iOS, крос-платформи)</div>
+                        <div class="skill-item">Можливість створити власний продукт чи стартап</div>
+                        <div class="skill-item">Вміння об'єднувати навички програмування, дизайну, архітектури — це високоцінна компетенція</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сторінка "Інженерія ПЗ" -->
+    <section id="engineering" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Інженерія програмного забезпечення</h2>
+                <p>Повний життєвий цикл розробки ПЗ: від ідеї до готового продукту</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <p>Це вивчення повного життєвого циклу ПЗ — від ідеї до готового продукту.</p>
+                    
+                    <h3>Студенти навчаються:</h3>
+                    <ul style="margin: 1rem 0 1rem 2rem;">
+                        <li>аналізувати вимоги користувачів;</li>
+                        <li>проєктувати архітектуру програми;</li>
+                        <li>писати технічну документацію;</li>
+                        <li>використовувати системи контролю версій (Git, GitHub);</li>
+                        <li>тестувати, налагоджувати та вдосконалювати код.</li>
+                    </ul>
+                    
+                    <h3>Курси:</h3>
+                    <ul style="margin: 1rem 0 1rem 2rem;">
+                        <li>Інженерія програмного забезпечення</li>
+                        <li>Управління ІТ-проєктами</li>
+                        <li>Тестування програмного забезпечення</li>
+                    </ul>
+                    
+                    <h3>Командна робота та практичні проєкти</h3>
+                    <p>Починаючи з 2–3 курсу, студенти:</p>
+                    <ul style="margin: 1rem 0 1rem 2rem;">
+                        <li>працюють над командними проєктами, де створюють реальні програми;</li>
+                        <li>беруть участь у хакатонах, олімпіадах із програмування;</li>
+                        <li>проходять стажування у місцевих IT-компаніях (EPAM, Delphi, Playtika, SoftServe, Astound тощо).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сторінка "Мови програмування" -->
+    <section id="languages" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Мови програмування</h2>
+                <p>Різні мови програмування для різних цілей та рівнів підготовки</p>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Що таке мова програмування</h3>
+                <div class="topic-content">
+                    <p>Мова програмування — формальна система запису інструкцій, яка дозволяє людині описати алгоритми, що потім виконає комп'ютер чи інша машина. Це засіб комунікації між програмістом і машиною (або між людьми через програму). Мови відрізняються синтаксисом, семантикою, рівнем абстракції, парадигмою (імперативна, декларативна, функціональна, об'єктно-орієнтована тощо).</p>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Категорії мов програмування</h3>
+                <div class="topic-content">
+                    <p>Ось типові класифікації:</p>
+                    <ul class="example-list">
+                        <li><strong>За рівнем абстракції:</strong> низькорівневі (наприклад, асемблер), високорівневі (наприклад, Python, Java)</li>
+                        <li><strong>За парадигмою:</strong> імперативні (наприклад, C), об'єктно-орієнтовані (наприклад, Java, C++), функціональні (наприклад, Haskell, Scala), скриптові/інтерпретовані (наприклад, JavaScript, Python)</li>
+                        <li><strong>За призначенням:</strong> системні (C, C++), веб (JavaScript, PHP), мобільні (Kotlin, Swift), наукові/аналітичні (R, Julia), вбудовані/реального часу (Rust, Zig) тощо</li>
+                        <li><strong>За способом виконання:</strong> компільовані (C, C++), інтерпретовані (Python, JavaScript), гібридні (наприклад Java з байт-кодом) тощо</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Популярні мови програмування сьогодні</h3>
+                <div class="topic-content">
+                    <h4>Python</h4>
+                    <p>Сьогодні Python — одна з найпопулярніших мов.</p>
+                    <p><strong>Переваги:</strong> простий і зрозумілий синтаксис, велика екосистема бібліотек (особливо в аналітиці, машинному навчанні), добре підходить для навчання.</p>
+                    <p><strong>Застосування:</strong> веб-розробка (Django, Flask), скрипти/автоматизація, аналіз даних, AI/ML, наукові обчислення.</p>
+                    <p><strong>Мінуси:</strong> не завжди найкраща продуктивність для задач, де критично швидке виконання, контролю ресурсів.</p>
+                    
+                    <h4>JavaScript</h4>
+                    <p>Ключова мова для веб-розробки (особливо фронт-енд).</p>
+                    <p><strong>Переваги:</strong> виконання прямо в браузері, величезний стек фреймворків (React, Angular, Vue), також застосовується на сервері (Node.js).</p>
+                    <p><strong>Застосування:</strong> інтерфейси веб-сайтів, інтерактивні додатки, серверна логіка, повноцінні веб-застосунки.</p>
+                    <p><strong>Мінуси:</strong> через історичний розвиток мови можуть бути нюанси з продуктивністю, асинхронністю; велика конкуренція на ринку.</p>
+                    
+                    <h4>Java</h4>
+                    <p>Одна з класичних мов для корпоративної розробки, також була/є основною для Android.</p>
+                    <p><strong>Переваги:</strong> стабільна, об'єктно-орієнтована, велика екосистема, хороша підтримка великих систем.</p>
+                    <p><strong>Застосування:</strong> серверна розробка, веб-сервіси, Android-додатки, корпоративні рішення.</p>
+                    <p><strong>Мінуси:</strong> може бути більш громіздкою, ніж "легкі" мови; конкуренція з сучаснішими мовами.</p>
+                    
+                    <h4>C++</h4>
+                    <p>Мова з високою продуктивністю, використовується там, де важлива швидкість і контроль ресурсів.</p>
+                    <p><strong>Переваги:</strong> потужність, контроль, хороша для ігор, системного ПЗ, реального часу.</p>
+                    <p><strong>Застосування:</strong> ігрові рушії, драйвери, системне програмування, високопродуктивні обчислення.</p>
+                    <p><strong>Мінуси:</strong> складніша в освоєнні, вимагає більшого контролю пам'яті та ресурсів.</p>
+                    
+                    <h4>Go (або Golang)</h4>
+                    <p>Відносно новіша мова, що швидко набирає популярність, особливо для хмарних сервісів та мікросервісів.</p>
+                    <p><strong>Переваги:</strong> проста синтакса, хороша продуктивність, вбудована підтримка паралелізму (горутини), створена Google.</p>
+                    <p><strong>Застосування:</strong> серверні сервіси, мікросервіси, інфраструктура, хмарні рішення.</p>
+                    <p><strong>Мінуси:</strong> менша екосистема ніж у "гігантів" як Python/Java; деякі функції "вищого рівня" обмежені.</p>
+                    
+                    <h4>Rust</h4>
+                    <p>Мова, що здобуває популярність завдяки фокусу на безпечній пам'яті та сучасному дизайну.</p>
+                    <p><strong>Переваги:</strong> висока продуктивність + безпечне управління пам'яттю без "сміттєзбірника", сучасні парадигми.</p>
+                    <p><strong>Застосування:</strong> системне програмування, вбудовані системи, програми з високими вимогами до безпеки та продуктивності.</p>
+                    <p><strong>Мінуси:</strong> крутіша крива навчання; менш "масова" ніж мови для веб/дивжів.</p>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Інші значущі мови</h3>
+                <div class="topic-content">
+                    <ul class="example-list">
+                        <li><strong>Kotlin</strong> — сучасна мова для Android-розробки, сумісна з Java</li>
+                        <li><strong>Swift</strong> — мова для iOS/macOS додатків</li>
+                        <li><strong>Julia</strong> — мова для наукових/математичних обчислень</li>
+                        <li><strong>Zig</strong> — новіша системна мова, альтернативна C/C++</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Як вибрати мову програмування</h3>
+                <div class="topic-content">
+                    <p>Коли обираєш, важливо враховувати такі критерії:</p>
+                    <ul class="example-list">
+                        <li><strong>Задача / галузь:</strong> чи це веб, чи мобайл, чи системи, чи дані</li>
+                        <li><strong>Популярність / екосистема:</strong> чи багато бібліотек, спільнота, вакансій</li>
+                        <li><strong>Продуктивність / ресурси:</strong> чи важлива швидкість, контроль пам'яті</li>
+                        <li><strong>Легкість у навчанні:</strong> для початку підійдуть мови із простішим синтаксисом (наприклад, Python)</li>
+                        <li><strong>Масштабованість та підтримка:</strong> наскільки добре мова справляється з великими проєктами</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="topic-section">
+                <h3 class="topic-title"><span class="topic-icon">🔹</span> Мови програмування, які вивчають у ВНТУ</h3>
+                <div class="topic-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Рівень</th>
+                                <th>Основні мови</th>
+                                <th>Де застосовуються</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Початковий</td>
+                                <td>C, Python</td>
+                                <td>Алгоритмічне мислення, основи програмування</td>
+                            </tr>
+                            <tr>
+                                <td>Середній</td>
+                                <td>C++, Java</td>
+                                <td>ООП, десктопні застосунки</td>
+                            </tr>
+                            <tr>
+                                <td>Просунутий</td>
+                                <td>JavaScript, TypeScript, C#, PHP, Kotlin</td>
+                                <td>Web і мобільна розробка</td>
+                            </tr>
+                            <tr>
+                                <td>Спеціальний</td>
+                                <td>SQL, R, MATLAB</td>
+                                <td>Обробка даних, наукові обчислення</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Програмування & ПЗ</div>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPage('home')">Головна</a></li>
+                    <li><a href="#" onclick="showPage('basics')">Основи</a></li>
+                    <li><a href="#" onclick="showPage('oop')">ООП</a></li>
+                    <li><a href="#" onclick="showPage('web')">Веб-розробка</a></li>
+                    <li><a href="#" onclick="showPage('mobile')">Мобільна розробка</a></li>
+                    <li><a href="#" onclick="showPage('engineering')">Інженерія ПЗ</a></li>
+                    <li><a href="#" onclick="showPage('languages')">Мови програмування</a></li>
+                </ul>
+                <div class="copyright">
+                    &copy; 2023 Програмування та розробка програмного забезпечення. Всі права захищені.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Функція для перемикання між сторінками
+        function showPage(pageId) {
+            // Приховуємо всі сторінки
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Показуємо потрібну сторінку
+            document.getElementById(pageId).classList.add('active');
+            
+            // Прокручуємо до верху сторінки
+            window.scrollTo(0, 0);
+            
+            return false; // Запобігаємо стандартній поведінці посилань
+        }
+    </script>
+</body>
+</html>
